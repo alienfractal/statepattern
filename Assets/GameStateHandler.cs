@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,7 +61,6 @@ public class GameStateHandler : MonoBehaviour
     public void enterIntro()
     {
         hideScreens();
-        Debug.Log((int)UISateGameObject.gameFlow_Intro);
         stateGameObjects[(int)UISateGameObject.gameFlow_Intro].SetActive(true);
 
     }
@@ -115,5 +115,10 @@ public class GameStateHandler : MonoBehaviour
         }
 
 
+    }
+
+    internal void enterWinLevel()
+    {
+        throw new NotImplementedException();
     }
 }

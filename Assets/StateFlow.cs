@@ -21,6 +21,12 @@ public interface SCIGms
 
      void raiseIntro();
 
+     void raiseWinLevel();
+
+     void raiseWinGame();
+
+     void raiseGameOver();
+
      long getCont();
 
      void setCont(long value);

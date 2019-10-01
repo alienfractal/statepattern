@@ -19,7 +19,10 @@
         - Add an option for  public void runCycle() 
         - Add the enter sequence and exit sequence for exitSequence_GameFlow() and enterSequenceGameFlow()
         - Add the new transition   Intro -> Menu  like in the example 
-        
                 private bool gameFlow_Intro_react(bool try_transition)
+        - Then update GameStateHandler UISateGameObject states
+        - add option to setNextState
+        - GameObject[]  array should have the new screen. 
+                         
 
         

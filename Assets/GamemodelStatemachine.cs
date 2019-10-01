@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +23,10 @@ public class GamemodelStatemachine : StateFlow
         gameFlow__final_,
         gameFlow_New_Game,
         gameFlow_Stats,
-        gameFlow_null
+        gameFlow_null,
+        gameFlow_winLevel
+
+
     };
 
     private int nextStateIndex;
@@ -39,6 +43,12 @@ public class GamemodelStatemachine : StateFlow
         public bool newGame;
         public bool stats;
         public bool intro;
+
+        public bool winLevel;
+
+        public bool winGame;
+
+        public bool gameover;
 
         GamemodelStatemachine gamemodelStatemachine;
         public SCIGmsImpl(GamemodelStatemachine _gamemodelStatemachine)
@@ -90,6 +100,22 @@ public class GamemodelStatemachine : StateFlow
             gamemodelStatemachine.runCycle();
         }
 
+          public void raiseWinLevel()
+        {
+            winLevel = true;
+            gamemodelStatemachine.runCycle();
+        }
+
+        public void raiseWinGame()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void raiseGameOver()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public long cont;
 
         public long getCont()
@@ -111,6 +137,8 @@ public class GamemodelStatemachine : StateFlow
             exitGame = false;
             intro = false;
         }
+
+      
     }
 
 
@@ -169,6 +197,9 @@ public class GamemodelStatemachine : StateFlow
                 case State.gameFlow_Stats:
                     gameFlow_Stats_react(true);
                     break;
+                case State.gameFlow_winLevel:
+                    gameFlow_Winlevel_react(true);
+                    break;    
                     // gameFlow_null
             }
         }
@@ -176,6 +207,8 @@ public class GamemodelStatemachine : StateFlow
 
 
     }
+
+  
     public void exit()
     {
         exitSequence_GameFlow();
@@ -239,6 +272,16 @@ public class GamemodelStatemachine : StateFlow
         return sCIGms;
     }
 
+    //ENTER SEQUENCE
+
+      private void enterSequence_GameFlow_WinLevel()
+    {
+        nextStateIndex = 0;
+        stateVector[0] = State.gameFlow_winLevel;
+        gameStateHandler.enterWinLevel();
+       
+    }
+
     /* 'default' enter sequence for state Intro */
     private void enterSequence_GameFlow_Intro_default()
     {
@@ -285,6 +328,8 @@ public class GamemodelStatemachine : StateFlow
     {
         react_GameFlow__entry_Default();
     }
+
+    // EXIT SEQUENCE
 
     /* Default exit sequence for state Intro */
     private void exitSequence_GameFlow_Intro()
@@ -345,6 +390,34 @@ public class GamemodelStatemachine : StateFlow
                 break;
         }
     }
+    // REACT METHODS
+
+  private bool gameFlow_Winlevel_react(bool try_transition)
+    {
+         bool did_transition = try_transition;
+
+           if (try_transition)
+        {
+            if (sCIGms.winLevel)
+            {
+                exitSequence_GameFlow_New_Game();
+                enterSequence_GameFlow_WinLevel();
+                react();
+            }
+            else
+            {
+                did_transition = false;
+            }
+        }
+        if (did_transition == false)
+        {
+            did_transition = react();
+        }
+        return did_transition;
+    }
+
+  
+
 
     /* Default react sequence for initial entry  */
     private void react_GameFlow__entry_Default()
@@ -501,5 +574,3 @@ public class GamemodelStatemachine : StateFlow
     }
 
 }
-
-
