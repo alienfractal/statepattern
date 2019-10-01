@@ -1,0 +1,11 @@
+        
+        
+        Debug.Log("GameManagerControler START");
+        gameStateHandler.valideGameState();
+        gamemodelStatemachine = new GamemodelStatemachine();
+        gamemodelStatemachine.getSCIGms().setSCIGmsOperationCallback(new GameMenuCallback());
+        gamemodelStatemachine.init();
+        gamemodelStatemachine.enter();
+        Debug.Log(gamemodelStatemachine.getCurrentState());
+        gamemodelStatemachine.getSCIGms().raiseMenu();
+        Debug.Log(gamemodelStatemachine.getCurrentState());

@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class GameStateHandler : MonoBehaviour
 {
-    public enum GAME_STATE { INTRO, MENU, STATS, GAME, WIN, FAIL, END }
-    public GAME_STATE CURRENT_GAME_STATE;
 
-    public GameObject[] STATES;
+
+    public GameObject[] stateGameObjects;
+    private GamemodelStatemachine gamemodelStatemachine;
+
+
+
+    public enum UISateGameObject
+    {
+        gameFlow_Intro,
+        gameFlow_Menu,
+        gameFlow_New_Game,
+        gameFlow_Stats,
+        gameFlow_Final
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        CURRENT_GAME_STATE = GAME_STATE.INTRO;
+        hideScreens();
+        setGamemodelStatemachine(new GamemodelStatemachine());
+        getGamemodelStatemachine().getSCIGms().setSCIGmsOperationCallback(new GameMenuCallback());
+        getGamemodelStatemachine().init();
+        getGamemodelStatemachine().enter();
+        hideScreens();
+        valideGameState();
     }
 
     // Update is called once per frame
@@ -24,29 +41,41 @@ public class GameStateHandler : MonoBehaviour
     public void valideGameState()
     {
 
-        for (int i = 0; i < STATES.Length; i++)
-        {
-            if (STATES[i] != null)
-            {
-                if (i == (int)CURRENT_GAME_STATE)
-                {
-                    STATES[i].SetActive(true);
-                }
-                else{
-                    STATES[i].SetActive(false);
-                }
-                
-
-            }
-
-        }
-
+        stateGameObjects[(int)(getGamemodelStatemachine().getCurrentState())].SetActive(true);
     }
 
-    public void setNextState(GAME_STATE NEXT_GAME_STATE)
+    public void hideScreens()
     {
-        CURRENT_GAME_STATE = NEXT_GAME_STATE;
-        valideGameState();
+        foreach (GameObject item in stateGameObjects)
+        {
+            item.SetActive(false);
+        }
     }
 
+    public GamemodelStatemachine getGamemodelStatemachine()
+    {
+        return gamemodelStatemachine;
+    }
+
+    public void setGamemodelStatemachine(GamemodelStatemachine value)
+    {
+        this.gamemodelStatemachine = value;
+    }
+
+    public void enterIntro() {
+
+     }
+    public void enterMenu() {
+
+     }
+    public void enterGame() {
+
+     }
+    public void enterFinalState() {
+
+     }
+
+     public void enterStatsState() {
+
+     }
 }

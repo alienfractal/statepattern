@@ -7,6 +7,8 @@ public class ButtonHandler : MonoBehaviour
 {
     public GameStateHandler gameStateHandler;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class ButtonHandler : MonoBehaviour
     }
 
     public void setNextState(int NEXT_GAME_STATE)
-    {   Debug.Log("CLICK "+NEXT_GAME_STATE+" "+((GameStateHandler.GAME_STATE)NEXT_GAME_STATE));
-        gameStateHandler.setNextState((GameStateHandler.GAME_STATE)NEXT_GAME_STATE);
+    {   //Debug.Log("CLICK "+NEXT_GAME_STATE+" "+((GameStateHandler.GAME_STATE)NEXT_GAME_STATE));
+       // gameStateHandler.setNextState((gameStateHandler.getGamemodelStatemachine().setNextState())NEXT_GAME_STATE);
     }
 }
