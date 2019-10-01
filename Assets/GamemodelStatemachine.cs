@@ -34,6 +34,12 @@ public class GamemodelStatemachine : StateFlow
     }
     public class SCIGmsImpl : SCIGms
     {
+        public bool menu;
+        public bool finish;
+        public bool newGame;
+        public bool stats;
+        public bool intro;
+
         GamemodelStatemachine gamemodelStatemachine;
         public SCIGmsImpl(GamemodelStatemachine _gamemodelStatemachine)
         {
@@ -45,8 +51,6 @@ public class GamemodelStatemachine : StateFlow
         {
             this.operationCallback = (GameMenuCallback)operationCallback;
         }
-        public bool menu;
-
 
         public void raiseMenu()
         {
@@ -54,26 +58,17 @@ public class GamemodelStatemachine : StateFlow
             gamemodelStatemachine.runCycle();
         }
 
-        public bool finish;
-
-
         public void raiseFinish()
         {
             finish = true;
             gamemodelStatemachine.runCycle();
         }
 
-        public bool newGame;
-
-
         public void raiseNewGame()
         {
             newGame = true;
             gamemodelStatemachine.runCycle();
         }
-
-        public bool stats;
-
 
         public void raiseStats()
         {
@@ -83,15 +78,11 @@ public class GamemodelStatemachine : StateFlow
 
         public bool exitGame;
 
-
         public void raiseExitGame()
         {
             exitGame = true;
             gamemodelStatemachine.runCycle();
         }
-
-        public bool intro;
-
 
         public void raiseIntro()
         {
@@ -253,7 +244,7 @@ public class GamemodelStatemachine : StateFlow
     {
         nextStateIndex = 0;
         stateVector[0] = State.gameFlow_Intro;
-        Debug.Log("Entered Intro");
+
         gameStateHandler.enterIntro();
     }
 
@@ -278,7 +269,7 @@ public class GamemodelStatemachine : StateFlow
     {
         nextStateIndex = 0;
         stateVector[0] = State.gameFlow_New_Game;
-        gameStateHandler.enterFinalState();
+        gameStateHandler.enterGame();
     }
 
     /* 'default' enter sequence for state Stats */

@@ -9,3 +9,17 @@
         Debug.Log(gamemodelStatemachine.getCurrentState());
         gamemodelStatemachine.getSCIGms().raiseMenu();
         Debug.Log(gamemodelStatemachine.getCurrentState());
+
+
+        Adding a new State  :
+        - implement the method according to StateFlow SCIGms interface.
+        - SCIGmsImpl add boolean variable. 
+        - add the variable to clearEvents method.
+        - Add the new state to the Enum in GameStateMachine.State
+        - Add an option for  public void runCycle() 
+        - Add the enter sequence and exit sequence for exitSequence_GameFlow() and enterSequenceGameFlow()
+        - Add the new transition   Intro -> Menu  like in the example 
+        
+                private bool gameFlow_Intro_react(bool try_transition)
+
+        

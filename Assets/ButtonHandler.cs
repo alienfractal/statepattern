@@ -7,7 +7,9 @@ public class ButtonHandler : MonoBehaviour
 {
     public GameStateHandler gameStateHandler;
 
-    
+    public GameStateHandler.UISateGameObject nextState;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +23,8 @@ public class ButtonHandler : MonoBehaviour
 
     }
 
-    public void setNextState(int NEXT_GAME_STATE)
-    {   //Debug.Log("CLICK "+NEXT_GAME_STATE+" "+((GameStateHandler.GAME_STATE)NEXT_GAME_STATE));
-       // gameStateHandler.setNextState((gameStateHandler.getGamemodelStatemachine().setNextState())NEXT_GAME_STATE);
+    public void setNextState()
+    {
+        gameStateHandler.setNextState(nextState);
     }
 }

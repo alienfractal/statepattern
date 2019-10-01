@@ -23,13 +23,13 @@ public class GameStateHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hideScreens();
-        setGamemodelStatemachine(new GamemodelStatemachine());
+
+        setGamemodelStatemachine(new GamemodelStatemachine(this));
         getGamemodelStatemachine().getSCIGms().setSCIGmsOperationCallback(new GameMenuCallback());
         getGamemodelStatemachine().init();
         getGamemodelStatemachine().enter();
-        hideScreens();
-        valideGameState();
+
+
     }
 
     // Update is called once per frame
@@ -38,11 +38,6 @@ public class GameStateHandler : MonoBehaviour
 
     }
 
-    public void valideGameState()
-    {
-
-        stateGameObjects[(int)(getGamemodelStatemachine().getCurrentState())].SetActive(true);
-    }
 
     public void hideScreens()
     {
@@ -62,20 +57,63 @@ public class GameStateHandler : MonoBehaviour
         this.gamemodelStatemachine = value;
     }
 
-    public void enterIntro() {
+    public void enterIntro()
+    {
+        hideScreens();
+        Debug.Log((int)UISateGameObject.gameFlow_Intro);
+        stateGameObjects[(int)UISateGameObject.gameFlow_Intro].SetActive(true);
 
-     }
-    public void enterMenu() {
+    }
+    public void enterMenu()
+    {
+        hideScreens();
+        stateGameObjects[(int)UISateGameObject.gameFlow_Menu].SetActive(true);
+    }
+    public void enterGame()
+    {
+        hideScreens();
+        stateGameObjects[(int)UISateGameObject.gameFlow_New_Game].SetActive(true);
 
-     }
-    public void enterGame() {
+    }
 
-     }
-    public void enterFinalState() {
 
-     }
+    public void enterStatsState()
+    {
+        hideScreens();
+        stateGameObjects[(int)UISateGameObject.gameFlow_Stats].SetActive(true);
 
-     public void enterStatsState() {
+    }
 
-     }
+    public void enterFinalState()
+    {
+        hideScreens();
+        stateGameObjects[(int)UISateGameObject.gameFlow_Stats].SetActive(true);
+
+    }
+
+
+    public void setNextState(UISateGameObject nextState)
+    {
+        switch (nextState)
+        {
+            case UISateGameObject.gameFlow_Intro:
+                gamemodelStatemachine.getSCIGms().raiseIntro();
+                break;
+            case UISateGameObject.gameFlow_Menu:
+                gamemodelStatemachine.getSCIGms().raiseMenu();
+                break;
+            case UISateGameObject.gameFlow_Stats:
+                gamemodelStatemachine.getSCIGms().raiseStats();
+                break;
+            case UISateGameObject.gameFlow_New_Game:
+                gamemodelStatemachine.getSCIGms().raiseNewGame();
+                break;
+            default:
+                gamemodelStatemachine.getSCIGms().raiseIntro();
+                break;
+
+        }
+
+
+    }
 }
