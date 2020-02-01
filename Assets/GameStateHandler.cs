@@ -87,7 +87,8 @@ public class GameStateHandler : MonoBehaviour
     public void enterFinalState()
     {
         hideScreens();
-        stateGameObjects[(int)UISateGameObject.gameFlow_Stats].SetActive(true);
+        //stateGameObjects[(int)UISateGameObject.gameFlow_Stats].SetActive(true);
+        Application.Quit();
 
     }
 
@@ -107,6 +108,9 @@ public class GameStateHandler : MonoBehaviour
                 break;
             case UISateGameObject.gameFlow_New_Game:
                 gamemodelStatemachine.getSCIGms().raiseNewGame();
+                break;
+            case UISateGameObject.gameFlow_Final:
+                gamemodelStatemachine.getSCIGms().raiseExitGame();
                 break;
             default:
                 gamemodelStatemachine.getSCIGms().raiseIntro();
