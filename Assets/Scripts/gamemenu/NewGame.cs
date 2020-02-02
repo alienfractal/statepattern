@@ -1,5 +1,4 @@
-public class Intro : SimpleMenuState
-
+public class NewGame : SimpleMenuState
 {
     public override void exitgame(MenuFSM menuFSM)
     {
@@ -8,18 +7,20 @@ public class Intro : SimpleMenuState
 
     public override void intro(MenuFSM menuFSM)
     {
-        menuFSM.setState(INTRO);
-        menuFSM.loadIntro();
+        throw new System.NotImplementedException();
     }
 
     public override void menu(MenuFSM menuFSM)
     {
-        throw new System.NotImplementedException();
+        menuFSM.setState(MENU);
+        menuFSM.loadMenu();
     }
 
     public override void newgame(MenuFSM menuFSM)
     {
-        throw new System.NotImplementedException();
+       menuFSM.setState(NEWGAME);
+       menuFSM.loadNewGame();
+       
     }
 
     public override void stats(MenuFSM menuFSM)

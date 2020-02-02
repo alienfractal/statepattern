@@ -1,8 +1,9 @@
-public class Menu : SimpleMenuState
+public class ExitGame : SimpleMenuState
 {
     public override void exitgame(MenuFSM menuFSM)
     {
-        throw new System.NotImplementedException();
+        menuFSM.setState(EXITGAME);
+        menuFSM.loadExitGame();
     }
 
     public override void intro(MenuFSM menuFSM)
@@ -12,8 +13,7 @@ public class Menu : SimpleMenuState
 
     public override void menu(MenuFSM menuFSM)
     {
-        menuFSM.setState(MENU);
-        menuFSM.loadMenu();
+        throw new System.NotImplementedException();
     }
 
     public override void newgame(MenuFSM menuFSM)
