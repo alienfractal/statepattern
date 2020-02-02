@@ -5,12 +5,24 @@ public abstract class MenuFSM
 
     public void intro()
     {
-
+        this.state.intro(this);
     }
-    public void menu() { }
-    public void newgame() { }
-    public void stats() { }
-    public void exitgame() { }
+    public void menu()
+    {
+        this.state.menu(this);
+    }
+    public void newgame()
+    {
+        this.state.newgame(this);
+    }
+    public void stats()
+    {
+        this.state.stats(this);
+    }
+    public void exitgame()
+    {
+        this.state.exitgame(this);
+    }
 
     public void setState(MenuState _state)
     {

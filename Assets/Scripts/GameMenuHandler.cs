@@ -1,20 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameMenuHandler : MenuFSM
+using UnityEngine.UI;
+public class GameMenuHandler : MonoBehaviour
 {
-    MenuFSM fSM;
-    private String ACTIONS;
-    public GameObject[] stateGameObjects;
-
-
+    public GameMenuFSM menuFSM;
+     public GameObject[] stateGameObjects;
+    // Start is called before the first frame update
     void Start()
     {
-        fSM = this;
-        fSM.setState(SimpleMenuState.INTRO);
-        ACTIONS = "";
+        menuFSM = new GameMenuFSM(this);
+        menuFSM.Start();
+
     }
 
     // Update is called once per frame
@@ -24,37 +21,4 @@ public class GameMenuHandler : MenuFSM
     }
 
 
-      public void hideScreens()
-    {
-        foreach (GameObject item in stateGameObjects)
-        {
-            item.SetActive(false);
-        }
-    }
-
-
-    public override void loadExitGame()
-    {
-
-    }
-
-    public override void loadIntro()
-    {
-      Debug.Log("LoadingIntro");
-    }
-
-    public override void loadMenu()
-    {
-
-    }
-
-    public override void loadNewGame()
-    {
-
-    }
-
-    public override void loadStats()
-    {
-
-    }
 }
