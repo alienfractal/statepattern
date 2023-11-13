@@ -30,13 +30,16 @@ public abstract class MenuFSM
 
     }
 
+    public MenuState getState()
+    {
+        return this.state;
+
+    }
+    //All the FSM actions are described below. 
     public abstract void loadIntro();
     public abstract void loadMenu();
-
     public abstract void loadNewGame();
-
     public abstract void loadStats();
-
     public abstract void loadExitGame();
 
 

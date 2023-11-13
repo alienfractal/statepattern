@@ -3,11 +3,8 @@ public abstract class SimpleMenuState : MenuState
 
     public static Menu MENU = new Menu();
     public static Intro INTRO = new Intro();
-    
     public static Stats STATS = new Stats();
-
     public static NewGame NEWGAME = new NewGame();
-
     public static ExitGame EXITGAME = new ExitGame();
     
 

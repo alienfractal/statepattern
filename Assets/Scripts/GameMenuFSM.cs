@@ -49,21 +49,21 @@ public class GameMenuFSM : MenuFSM
     {
         hideScreens();
         gmh.stateGameObjects[IDX_EXIT].SetActive(true);
-        Debug.Log("ExitGame");
+        Debug.Log("UI ExitGame FSM ->"+fSM.getState().ToString());
     }
 
     public override void loadIntro()
     {
         hideScreens();
         gmh.stateGameObjects[IDX_INTRO].SetActive(true);
-        Debug.Log("Intro");
+        Debug.Log("Intro FSM ->"+fSM.getState().ToString());
     }
 
     public override void loadMenu()
     {
         hideScreens();
         gmh.stateGameObjects[IDX_MENU].SetActive(true);
-        Debug.Log("Menu");
+        Debug.Log("Menu FSM ->"+fSM.getState().ToString());
 
     }
 
@@ -71,13 +71,13 @@ public class GameMenuFSM : MenuFSM
     {
         hideScreens();
         gmh.stateGameObjects[IDX_NEWGAME].SetActive(true);
-        Debug.Log("NewGame");
+        Debug.Log("NewGame FSM ->"+fSM.getState().ToString());
     }
 
     public override void loadStats()
     {
         hideScreens();
         gmh.stateGameObjects[IDX_STATS].SetActive(true);
-        Debug.Log("Stats");
+        Debug.Log("Stats FSM ->"+fSM.getState().ToString());
     }
 }
