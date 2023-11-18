@@ -1,83 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
+
 using UnityEngine;
 
 public class GameMenuFSM : MenuFSM
 {
-    public MenuFSM fSM;
-    private String ACTIONS;
-    public GameMenuHandler gmh;
-
-    int IDX_INTRO = 0;
-    int IDX_MENU = 1;
-    int IDX_NEWGAME = 2;
-    int IDX_STATS = 3;
-    int IDX_EXIT = 4;
-
-    public GameMenuFSM(GameMenuHandler _gmh)
+    public override void gameExit()
     {
-        this.gmh = _gmh;
+       Debug.Log("Game Exit");
     }
 
-    public void Start()
+    public override void gameIntro()
     {
-        fSM = this;
-        fSM.setState(SimpleMenuState.INTRO);
-        fSM.loadIntro();
-        ACTIONS = "";
-        
+         Debug.Log("Game Intro");
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void gameMenu()
     {
-
+          Debug.Log("Game Menu");
     }
 
-
-    public void hideScreens()
+    public override void gameStart()
     {
-        foreach (GameObject item in gmh.stateGameObjects)
-        {
-            item.SetActive(false);
-        }
+        Debug.Log("Game starting");
     }
 
-
-    public override void loadExitGame()
+    public override void gameStats()
     {
-        hideScreens();
-        gmh.stateGameObjects[IDX_EXIT].SetActive(true);
-        Debug.Log("UI ExitGame FSM ->"+fSM.getState().ToString());
-    }
-
-    public override void loadIntro()
-    {
-        hideScreens();
-        gmh.stateGameObjects[IDX_INTRO].SetActive(true);
-        Debug.Log("Intro FSM ->"+fSM.getState().ToString());
-    }
-
-    public override void loadMenu()
-    {
-        hideScreens();
-        gmh.stateGameObjects[IDX_MENU].SetActive(true);
-        Debug.Log("Menu FSM ->"+fSM.getState().ToString());
-
-    }
-
-    public override void loadNewGame()
-    {
-        hideScreens();
-        gmh.stateGameObjects[IDX_NEWGAME].SetActive(true);
-        Debug.Log("NewGame FSM ->"+fSM.getState().ToString());
-    }
-
-    public override void loadStats()
-    {
-        hideScreens();
-        gmh.stateGameObjects[IDX_STATS].SetActive(true);
-        Debug.Log("Stats FSM ->"+fSM.getState().ToString());
+       Debug.Log("Game Stats");
     }
 }
