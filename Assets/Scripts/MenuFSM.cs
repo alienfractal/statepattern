@@ -44,7 +44,7 @@ public enum MenuInput
      // Method to handle input
     public void handleInput(MenuInput input)
     {
-        currentState?.handleTransition(this, input);
+        currentState?.handleNextState(this, input);
     }
   //All the FSM actions are described below. 
   public abstract void gameStart();
@@ -52,4 +52,5 @@ public enum MenuInput
   public abstract void gameStats();
   public abstract void gameExit();
   public abstract void gameMenu();
+  public abstract void gameUIClear();
 }

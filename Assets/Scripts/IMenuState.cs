@@ -6,7 +6,7 @@ namespace FSMMenuSys
         void enter(MenuFSM menuFSM);
         void exit(MenuFSM menuFSM);
 
-        void handleTransition(MenuFSM menuFSM,MenuFSM.MenuInput state);
+        void handleNextState(MenuFSM menuFSM,MenuFSM.MenuInput state);
 
     }
 }

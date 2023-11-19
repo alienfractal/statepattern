@@ -3,15 +3,15 @@ public class GMenu : IMenuState
 {
     public void enter(MenuFSM menuFSM)
     {
-       
+       menuFSM.gameMenu();
     }
 
     public void exit(MenuFSM menuFSM)
     {
-       
+       menuFSM.gameUIClear();
     }
 
-    public void handleTransition(MenuFSM menuFSM, MenuFSM.MenuInput state)
+    public void handleNextState(MenuFSM menuFSM, MenuFSM.MenuInput state)
     {
          switch(state)
         {

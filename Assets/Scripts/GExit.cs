@@ -4,16 +4,16 @@ public class GExit : IMenuState
 {
     public void enter(MenuFSM menuFSM)
     {
-        //throw new System.NotImplementedException();
+         menuFSM.gameExit();
     }
 
     public void exit(MenuFSM menuFSM)
     {
-        //throw new System.NotImplementedException();
+         menuFSM.gameUIClear();
     }
 
-    public void handleTransition(MenuFSM menuFSM, MenuFSM.MenuInput state)
+    public void handleNextState(MenuFSM menuFSM, MenuFSM.MenuInput state)
     {
-        
+        menuFSM.setState(MenuFSM.GEXIT);
     }
 }

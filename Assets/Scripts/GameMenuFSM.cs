@@ -1,31 +1,43 @@
 
 
 using UnityEngine;
-
-public class GameMenuFSM : MenuFSM
+namespace FSMMenuSys
 {
-    public override void gameExit()
+    public class GameMenuFSM : MenuFSM
     {
-       Debug.Log("Game Exit");
-    }
 
-    public override void gameIntro()
+         public GameMenuFSM()
     {
-         Debug.Log("Game Intro");
+        // Constructor logic here
     }
+        public override void gameExit()
+        {
+            Debug.Log("Game Exit");
+        }
 
-    public override void gameMenu()
-    {
-          Debug.Log("Game Menu");
-    }
+        public override void gameIntro()
+        {
+            Debug.Log("Game Intro");
+        }
 
-    public override void gameStart()
-    {
-        Debug.Log("Game starting");
-    }
+        public override void gameMenu()
+        {
+            Debug.Log("Game Menu");
+        }
 
-    public override void gameStats()
-    {
-       Debug.Log("Game Stats");
+        public override void gameStart()
+        {
+            Debug.Log("Game starting");
+        }
+
+        public override void gameStats()
+        {
+            Debug.Log("Game Stats");
+        }
+
+        public override void gameUIClear()
+        {
+            Debug.Log("Clear the UI for the next state");
+        }
     }
 }
