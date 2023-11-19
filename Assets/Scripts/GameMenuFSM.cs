@@ -5,39 +5,48 @@ namespace FSMMenuSys
 {
     public class GameMenuFSM : MenuFSM
     {
+        private MainGameManager mgMan;
+        public GameMenuFSM()
+        {
 
-         public GameMenuFSM()
-    {
-        // Constructor logic here
-    }
+        }
+
         public override void gameExit()
         {
-            Debug.Log("Game Exit");
+      
+             MgMan.gameExit();
         }
 
         public override void gameIntro()
         {
-            Debug.Log("Game Intro");
+         
+            MgMan.gameIntro();
         }
 
         public override void gameMenu()
         {
-            Debug.Log("Game Menu");
+           
+             MgMan.gameMenu();
         }
 
         public override void gameStart()
         {
-            Debug.Log("Game starting");
+         
+            MgMan.gameStart();
         }
 
         public override void gameStats()
         {
-            Debug.Log("Game Stats");
+          
+            MgMan.gameStats();
         }
 
         public override void gameUIClear()
         {
-            Debug.Log("Clear the UI for the next state");
+          
+            MgMan.gameUIClear();
         }
+
+        public MainGameManager MgMan { get => mgMan; set => mgMan = value; }
     }
 }
