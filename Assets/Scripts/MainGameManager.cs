@@ -6,11 +6,12 @@ using UnityEngine;
 public class MainGameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    private MenuFSM menuFSM;
+    private GameMenuFSM menuFSM;
     void Start()
     {
         menuFSM = new GameMenuFSM();
-        menuFSM.gameIntro();
+        menuFSM.setState(MenuFSM.GMENU);
+        menuFSM.handleInput(MenuFSM.MenuInput.MainMenu);
     }
 
     // Update is called once per frame
