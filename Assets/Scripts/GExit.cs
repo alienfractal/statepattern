@@ -15,5 +15,6 @@ public class GExit : IMenuState
     public void handleNextState(MenuFSM menuFSM, MenuFSM.MenuInput state)
     {
         //menuFSM.setState(MenuFSM.GEXIT);
+        //This will sent fsm into an endless loop. 
     }
 }
