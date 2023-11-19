@@ -14,6 +14,6 @@ public class GExit : IMenuState
 
     public void handleNextState(MenuFSM menuFSM, MenuFSM.MenuInput state)
     {
-        menuFSM.setState(MenuFSM.GEXIT);
+        //menuFSM.setState(MenuFSM.GEXIT);
     }
 }

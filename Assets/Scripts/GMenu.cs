@@ -27,9 +27,7 @@ public class GMenu : IMenuState
             case MenuFSM.MenuInput.ExitGame:
                 menuFSM.setState(MenuFSM.GEXIT);
                 break;
-            case MenuFSM.MenuInput.MainMenu:
-                menuFSM.setState(MenuFSM.GMENU);
-                break;    
+        
         }
         
     }

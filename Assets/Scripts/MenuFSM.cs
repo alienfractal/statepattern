@@ -47,16 +47,7 @@ public abstract class MenuFSM
   // Method to handle input
   public void handleInput(MenuInput input)
   {
-
-    try
-    {
-      currentState.handleNextState(this, input);
-    }
-    catch (Exception ex)
-    {
-      // Handle the exception
-      Debug.Log("An error occurred: " + ex.Message);
-    }
+      currentState?.handleNextState(this, input);  
   }
   //All the FSM actions are described below. 
   public abstract void gameStart();

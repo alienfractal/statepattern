@@ -12,12 +12,11 @@ public class MenuTestScript
     public void MenuTestScriptSimplePasses()
     {
         // Use the Assert class to test conditions
-         Debug.Log("Test is running");
+        Debug.Log("Test is running");
         GameMenuFSM gFsm = new GameMenuFSM();
-         
-         gFsm.setState(MenuFSM.GMENU);
-         gFsm.handleInput(MenuFSM.MenuInput.StartGame);
-         Assert.AreEqual(MenuFSM.GSTART, gFsm.getState());
+        gFsm.setState(MenuFSM.GMENU);
+        gFsm.handleInput(MenuFSM.MenuInput.StartGame);
+        Assert.AreEqual(MenuFSM.GSTART, gFsm.getState());
 
     }
 
@@ -31,3 +30,5 @@ public class MenuTestScript
         yield return null;
     }
 }
+
+public class MainGameManager { }
