@@ -12,8 +12,6 @@ public class MainGameManager : MonoBehaviour
     {
         menuFSM = new GameMenuFSM();
         menuFSM.MgMan = this;
-        //Only when the state machine is created
-        //Otherwise navigation should go as a transition. 
         menuFSM.setState(MenuFSM.GMENU);
         gameMenu();
     }
