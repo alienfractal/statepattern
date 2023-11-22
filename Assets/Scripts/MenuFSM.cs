@@ -1,7 +1,8 @@
+
 using System;
 using FSMMenuSys;
-
 using UnityEngine;
+ 
 public abstract class MenuFSM
 {
   public enum MenuInput
@@ -19,17 +20,31 @@ public abstract class MenuFSM
   public static GStart GSTART = new GStart();
   public static Gstats GSTATS = new Gstats();
   public static GMenu GMENU = new GMenu();
+
+  public String ACTIONS;
   /**
   *Events
   */
   public void enter()
   {
-    currentState?.enter(this);
+    //currentState?.enter(this);
+      if(currentState != null){
+      currentState.enter(this);
+    }
+    else{
+      Debug.Log("State is null");
+    }
   }
 
-  public void exit()
+  public void transition(MenuFSM.MenuInput newState)
   {
-    currentState?.exit(this);
+    if(currentState != null){
+      currentState.transition(this,newState);
+    }
+    else{
+      Debug.Log("State is null");
+    }
+    
   }
 
   public IMenuState getState()
@@ -40,15 +55,9 @@ public abstract class MenuFSM
   // Sets the current state of the FSM
   public void setState(IMenuState newState)
   {
-    currentState?.exit(this);
     currentState = newState;
-    currentState?.enter(this);
   }
-  // Method to handle input
-  public void handleInput(MenuInput input)
-  {
-      currentState?.handleNextState(this, input);  
-  }
+
   //All the FSM actions are described below. 
   public abstract void gameStart();
   public abstract void gameIntro();

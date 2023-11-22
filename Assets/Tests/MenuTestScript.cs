@@ -15,7 +15,7 @@ public class MenuTestScript
         Debug.Log("Test is running");
         GameMenuFSM gFsm = new GameMenuFSM();
         gFsm.setState(MenuFSM.GMENU);
-        gFsm.handleInput(MenuFSM.MenuInput.StartGame);
+       // gFsm.handleInput(MenuFSM.MenuInput.StartGame);
         Assert.AreEqual(MenuFSM.GSTART, gFsm.getState());
 
     }

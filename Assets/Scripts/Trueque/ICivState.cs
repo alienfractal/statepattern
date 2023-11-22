@@ -2,7 +2,6 @@ public interface ICivState
 {
     // Start is called before the first frame update
     void enter(CivFSM civFSM);
-    void exit(CivFSM civFSM);
+    void transition(CivFSM civFSM, CivFSM.CivInput state);
 
-    void handleNextState(CivFSM menuFSM, CivFSM.CivInput state); 
-    }
+}

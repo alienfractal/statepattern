@@ -1,6 +1,5 @@
 
 
-using UnityEngine;
 namespace FSMMenuSys
 {
     public class GameMenuFSM : MenuFSM
@@ -13,37 +12,42 @@ namespace FSMMenuSys
 
         public override void gameExit()
         {
-      
-             MgMan.gameExit();
+            transition(MenuInput.ExitGame);
+            enter();
+
         }
 
         public override void gameIntro()
         {
-         
-            MgMan.gameIntro();
+            transition(MenuInput.ShowIntro);
+            enter();
+
         }
 
         public override void gameMenu()
         {
-           
-             MgMan.gameMenu();
+            transition(MenuInput.MainMenu);
+            enter();
+
+
         }
 
         public override void gameStart()
         {
-         
-            MgMan.gameStart();
+            transition(MenuInput.StartGame);
+            enter();
+
         }
 
         public override void gameStats()
         {
-          
-            MgMan.gameStats();
+
+            transition(MenuInput.ShowStats);
+            enter();
         }
 
         public override void gameUIClear()
         {
-          
             MgMan.gameUIClear();
         }
 

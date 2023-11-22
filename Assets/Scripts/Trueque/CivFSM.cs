@@ -35,15 +35,33 @@ public abstract class CivFSM
     // Diplomatic and Military Properties
     private float militaryStrength;
 
-    protected CivFSM(ICivState currentState, string name, int population, float foodsupply, float materialstockpile, float foodProductionRate, float materialProductionRate, float foodConsuptionRatePerperson, float materialConsuptionRatePerperson, float economicStrength, float technologicalLevel, float militaryStrength)
+    public static CivIdle CIVIDLE = new CivIdle();
+    public static CivTrade CIVTRADE = new CivTrade();
+    public static CivUpdate CIVUPDATE = new CivUpdate();
+    public static CivDefend CIVDEFEND = new CivDefend();
+
+    public String ACTIONS;
+
+
+    public abstract void gameIdle();
+
+    public abstract void gameUpdate();
+
+    public abstract void gameTrade();
+
+    public abstract void gameDefend();
+
+    public abstract void updateUI();
+ 
+
+    protected CivFSM(string name, int population, float foodsupply, float materialstockpile, float foodProductionRate, float materialProductionRate, float foodConsuptionRatePerperson, float materialConsuptionRatePerperson, float economicStrength, float technologicalLevel, float militaryStrength)
     {
-        this.currentState = currentState;
         this.name = name;
         this.population = population;
         this.foodsupply = foodsupply;
         this.materialstockpile = materialstockpile;
         this.foodProductionRate = foodProductionRate;
-        MaterialProductionRate = materialProductionRate;
+        this.materialProductionRate = materialProductionRate;
         this.foodConsuptionRatePerperson = foodConsuptionRatePerperson;
         this.materialConsuptionRatePerperson = materialConsuptionRatePerperson;
         this.economicStrength = economicStrength;
@@ -56,38 +74,23 @@ public abstract class CivFSM
         currentState?.enter(this);
     }
 
-    public void exit()
+    public void transition(CivInput stateInput)
     {
-        currentState?.exit(this);
+        currentState?.transition(this,stateInput);
     }
 
     public ICivState getState()
     {
-        return this.currentState;
+        return  currentState;
     }
 
     // Sets the current state of the FSM
     public void setState(ICivState newState)
     {
-        currentState?.exit(this);
         currentState = newState;
-        currentState?.enter(this);
-    }
-    // Method to handle input
-    public void handleInput(CivInput input)
-    {
-        currentState?.handleNextState(this, input);
     }
 
-    public abstract void gameIdle();
-
-    public abstract void gameUpdate();
-
-    public abstract void gameTrade();
-
-    public abstract void gameDefend();
-
-    public abstract void updateUI();
+  
 
 
     public string Name { get => name; set => name = value; }
@@ -95,7 +98,7 @@ public abstract class CivFSM
     public float Foodsupply { get => foodsupply; set => foodsupply = value; }
     public float Materialstockpile { get => materialstockpile; set => materialstockpile = value; }
     public float FoodProductionRate { get => foodProductionRate; set => foodProductionRate = value; }
-    public float MaterialProductionRate { get => MaterialProductionRate; set => MaterialProductionRate = value; }
+    public float MaterialProductionRate { get => materialProductionRate; set => materialProductionRate = value; }
     public float FoodConsuptionRatePerperson { get => foodConsuptionRatePerperson; set => foodConsuptionRatePerperson = value; }
     public float MaterialConsuptionRatePerperson { get => materialConsuptionRatePerperson; set => materialConsuptionRatePerperson = value; }
     public float EconomicStrength { get => economicStrength; set => economicStrength = value; }

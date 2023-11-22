@@ -1,8 +1,8 @@
-public class CivIdle : ICivState
+public class CivDefend : ICivState
 {
     public void enter(CivFSM civFSM)
     {
-  civFSM.ACTIONS+="I";
+        civFSM.ACTIONS+="D";
     }
 
     public void transition(CivFSM civFSM, CivFSM.CivInput state)
@@ -14,8 +14,7 @@ public class CivIdle : ICivState
                 break;
             
         }
-       civFSM.updateUI();
+        civFSM.updateUI();
     }
 
-  
 }

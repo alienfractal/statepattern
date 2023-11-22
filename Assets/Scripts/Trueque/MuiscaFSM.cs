@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class MuiscaFSM : CivFSM
 {
-    public MuiscaFSM(ICivState currentState, string name, int population, float foodsupply,
+    private CivilManager civMan;
+
+   
+
+    public MuiscaFSM( string name, int population, float foodsupply,
     float materialstockpile, float foodProductionRate, float materialProductionRate,
-     float foodConsuptionRatePerperson, float materialConsuptionRatePerperson,
-     float economicStrength, float technologicalLevel, float militaryStrength) : base(currentState, name, population, foodsupply, materialstockpile, foodProductionRate, materialProductionRate, foodConsuptionRatePerperson, materialConsuptionRatePerperson, economicStrength, technologicalLevel, militaryStrength)
+    float foodConsuptionRatePerperson, float materialConsuptionRatePerperson,
+    float economicStrength, float technologicalLevel, float militaryStrength) : base(name, population, foodsupply, materialstockpile, foodProductionRate, materialProductionRate, foodConsuptionRatePerperson, materialConsuptionRatePerperson, economicStrength, technologicalLevel, militaryStrength)
     {
-        setState(currentState);
+        
         Name = name;
         Population = population;
         Foodsupply = foodsupply;
@@ -24,33 +28,8 @@ public class MuiscaFSM : CivFSM
 
     }
 
-    // Start is called before the first frame update
-    public override void gameDefend()
-    {
-        throw new System.NotImplementedException();
-    }
 
-    public override void gameIdle()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void gameTrade()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void gameUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-
-     public override void updateUI()
-    {
-        throw new System.NotImplementedException();
-    }
-
-      // Method to update resource production for a turn/cycle
+    // Method to update resource production for a turn/cycle
     public void UpdateResourceProduction()
     {
         Foodsupply += FoodProductionRate - (Population * FoodConsuptionRatePerperson);
@@ -66,5 +45,31 @@ public class MuiscaFSM : CivFSM
         Population = (int)(Population * foodBasedGrowth * housingBasedGrowth);
     }
 
-   
+     public CivilManager CivMan { get => civMan; set => civMan = value; }
+
+     
+    public override void gameIdle()
+    {
+        transition(CivInput.Idle);
+    }
+
+    public override void gameUpdate()
+    {
+        transition(CivInput.Update);
+    }
+
+    public override void gameTrade()
+    {
+       transition(CivInput.Trade);
+    }
+
+    public override void gameDefend()
+    {
+        transition(CivInput.Defend);
+    }
+
+    public override void updateUI()
+    {
+        
+    }
 }

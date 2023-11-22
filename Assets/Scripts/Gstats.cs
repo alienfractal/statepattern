@@ -4,22 +4,20 @@ public class Gstats : IMenuState
 {
     public void enter(MenuFSM menuFSM)
     {
-        menuFSM.gameStats();
+         menuFSM.ACTIONS+="T";
     }
 
-    public void exit(MenuFSM menuFSM)
+    public void transition(MenuFSM menuFSM, MenuFSM.MenuInput state)
     {
-        menuFSM.gameUIClear();
-    }
-
-    public void handleNextState(MenuFSM menuFSM, MenuFSM.MenuInput state)
-    {
-        switch (state)
+         switch (state)
         {
 
             case MenuFSM.MenuInput.MainMenu:
                 menuFSM.setState(MenuFSM.GMENU);
                 break;
         }
+        menuFSM.gameUIClear();
     }
+
+   
 }
