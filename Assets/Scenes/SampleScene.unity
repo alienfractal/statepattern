@@ -1214,12 +1214,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   civPanel: {fileID: 1655211510}
   mapPanel: {fileID: 1569858727}
-  truequePanel: {fileID: 0}
-  population: {fileID: 1655211512}
-  foodSupply: {fileID: 1569858729}
-  materialStock: {fileID: 1508711373}
-  foodConsumption: {fileID: 1844959147}
-  materialConsmption: {fileID: 1710968782}
+  truequePanel: {fileID: 1369351076}
+  tMpopulation: {fileID: 1655211512}
+  tMfoodSupply: {fileID: 1569858729}
+  tMmaterialStock: {fileID: 1508711373}
+  tMfoodConsumption: {fileID: 1844959147}
+  tMmaterialConsmption: {fileID: 1710968782}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,7 +1667,7 @@ GameObject:
   - component: {fileID: 705179425}
   - component: {fileID: 705179424}
   m_Layer: 0
-  m_Name: START
+  m_Name: Cycle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1715,7 +1715,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.9803922, g: 0.57254905, b: 0.4666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1738,9 +1738,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2184213418023353575}
-        m_TargetAssemblyTypeName: MainGameManager, NewAssembly
-        m_MethodName: gameMenu
+      - m_Target: {fileID: 1740571913}
+        m_TargetAssemblyTypeName: CivilManager, NewAssembly
+        m_MethodName: gameUpdate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3069,7 +3069,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: 'Cycle
+
+'
 --- !u!222 &1390120311
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4620,6 +4622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1740571911}
   - component: {fileID: 1740571912}
+  - component: {fileID: 1740571913}
   m_Layer: 0
   m_Name: CivPanel
   m_TagString: Untagged
@@ -4696,6 +4699,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1740571913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740571910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3c23f315242934e9032c5b329d6987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePanelManager: {fileID: 497627118}
 --- !u!1 &1741462198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5458,7 +5474,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu
+  m_Text: Pause
 --- !u!224 &566046054320112725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5564,7 +5580,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.94117653, g: 0.54901963, b: 0.44705886, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -5633,7 +5649,7 @@ GameObject:
   - component: {fileID: 566046054693521954}
   - component: {fileID: 566046054693521955}
   m_Layer: 0
-  m_Name: Menu
+  m_Name: Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5657,3 +5673,4 @@ MonoBehaviour:
   - {fileID: 771007080}
   - {fileID: 1682002597}
   - {fileID: 1511993997}
+  civManager: {fileID: 1740571913}

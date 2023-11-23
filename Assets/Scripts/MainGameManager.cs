@@ -8,6 +8,8 @@ public class MainGameManager : MonoBehaviour
     // Start is called before the first frame update
     private GameMenuFSM menuFSM;
     public GameObject[] menuItems;
+
+    public CivilManager civManager;
    
     void Start()
     {
@@ -50,6 +52,7 @@ public class MainGameManager : MonoBehaviour
         menuFSM.gameStart();
         menuItems[2].SetActive(true);
         Debug.Log(menuFSM.ACTIONS);
+        civManager.init();
     }
 
     public void gameStats()
