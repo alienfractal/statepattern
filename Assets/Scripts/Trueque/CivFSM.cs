@@ -35,6 +35,8 @@ public abstract class CivFSM
     // Diplomatic and Military Properties
     private float militaryStrength;
 
+     private int deaths;
+
     public static CivIdle CIVIDLE = new CivIdle();
     public static CivTrade CIVTRADE = new CivTrade();
     public static CivUpdate CIVUPDATE = new CivUpdate();
@@ -104,6 +106,5 @@ public abstract class CivFSM
     public float EconomicStrength { get => economicStrength; set => economicStrength = value; }
     public float TechnologicalLevel { get => technologicalLevel; set => technologicalLevel = value; }
     public float MilitaryStrength { get => militaryStrength; set => militaryStrength = value; }
-
-
+    public int Deaths { get => deaths; set => deaths = value; }
 }

@@ -33,14 +33,15 @@ public class MuiscaFSM : CivFSM
     public void UpdateResourceProduction()
     {
         //Food and materials should be handled by bartering
-       // float nextFoodsupply = FoodProductionRate - (Population * FoodConsuptionRatePerperson);
-       Foodsupply -= Population * FoodConsuptionRatePerperson;
-          // Ensure food supply does not go negative
+        // float nextFoodsupply = FoodProductionRate - (Population * FoodConsuptionRatePerperson);
+        Foodsupply += FoodProductionRate;
+        Foodsupply -= Population * FoodConsuptionRatePerperson;
+        // Ensure food supply does not go negative
         if (Foodsupply < 0) { Foodsupply = 0; }
-        
+
         //float nextMaterialstockpile =MaterialProductionRate - (Population * MaterialConsuptionRatePerperson);
-            // MAterial gathering will be handled by Bartering. 
-            Materialstockpile -=Population * MaterialConsuptionRatePerperson;
+        // MAterial gathering will be handled by Bartering. 
+        Materialstockpile -= Population * MaterialConsuptionRatePerperson;
         // Ensure material stockpile does not go negative
         if (Materialstockpile < 0) Materialstockpile = 0;
     }
@@ -48,12 +49,28 @@ public class MuiscaFSM : CivFSM
     // Method to update population based on available resources
     public void UpdatePopulation()
     {
-
-        float foodBasedGrowth = Foodsupply >= Population ? 1.02f : 0.98f; // Example growth/decline rates
-        float housingBasedGrowth = Materialstockpile >= Population ? 1.01f : 0.99f;
-
+        float foodBasedGrowth = calculatefoodBasedGrowth(); // Example growth/decline rates
+        float housingBasedGrowth = calculateHousingGrowth();
         Population = (int)(Population * foodBasedGrowth * housingBasedGrowth);
         if (Population < 0) Population = 0;
+    }
+
+    private float calculatefoodBasedGrowth()
+    {
+        if (Foodsupply < Population)
+        {
+            return 0.65f;
+        }
+        return Foodsupply >= Population ? 1.02f : 0.98f;
+    }
+
+    private float calculateHousingGrowth()
+    {
+        if ((Materialstockpile * 0.85) < Population)
+        {
+            return 0.85f;
+        }
+        return Materialstockpile >= Population ? 1.01f : 0.99f;
     }
 
     public CivilManager CivMan { get => civMan; set => civMan = value; }

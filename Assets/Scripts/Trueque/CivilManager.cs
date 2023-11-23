@@ -15,7 +15,7 @@ public class CivilManager : MonoBehaviour
 
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class CivilManager : MonoBehaviour
     {
         randomInt = Random.Range(1, 10);
         muiscaciv = new MuiscaFSM("Bacata",
-        100, (float)300.0, (float)130.0, (float)80.0, (float)93.0, 1, 1, 1, 1, 1);
+        100, 300.0f, 130.0f, 25.0f, 60.0f, 1, 1, 1, 1, 1);
         muiscaciv.CivMan = this;
         muiscaciv.setState(CivFSM.CIVIDLE);
         gameIdle();
@@ -37,28 +37,36 @@ public class CivilManager : MonoBehaviour
 
     public void gameDefend()
     {
-
+        Debug.Log(muiscaciv.ACTIONS);
+        muiscaciv.gameDefend();
+        muiscaciv.gameIdle();
     }
 
     public void gameIdle()
     {
         Debug.Log("CivilManager gameIdle");
-        muiscaciv.gameIdle();
         Debug.Log(muiscaciv.ACTIONS);
+        muiscaciv.gameIdle();
+
     }
 
     public void gameTrade()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(muiscaciv.ACTIONS);
+        muiscaciv.gameTrade();
+        muiscaciv.gameIdle();
     }
 
     public void gameUpdate()
     {
+        Debug.Log(muiscaciv.ACTIONS);
         muiscaciv.gameUpdate();
+        muiscaciv.gameIdle();
     }
 
     public void updateUI()
     {
+        //Debug.Log(muiscaciv.ACTIONS);
         gamePanelManager.updateUI(muiscaciv.Population, muiscaciv.Foodsupply, muiscaciv.Materialstockpile, muiscaciv.FoodConsuptionRatePerperson, muiscaciv.MaterialConsuptionRatePerperson);
     }
 }
