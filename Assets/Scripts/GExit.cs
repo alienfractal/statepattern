@@ -4,17 +4,13 @@ public class GExit : IMenuState
 {
     public void enter(MenuFSM menuFSM)
     {
-         menuFSM.gameExit();
+         menuFSM.ACTIONS+="E";
     }
 
-    public void exit(MenuFSM menuFSM)
+    public void transition(MenuFSM menuFSM,MenuFSM.MenuInput state)
     {
          menuFSM.gameUIClear();
     }
 
-    public void handleNextState(MenuFSM menuFSM, MenuFSM.MenuInput state)
-    {
-        //menuFSM.setState(MenuFSM.GEXIT);
-        //This will sent fsm into an endless loop. 
-    }
+   
 }

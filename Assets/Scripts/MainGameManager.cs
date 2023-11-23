@@ -8,13 +8,15 @@ public class MainGameManager : MonoBehaviour
     // Start is called before the first frame update
     private GameMenuFSM menuFSM;
     public GameObject[] menuItems;
+
+    public CivilManager civManager;
+   
     void Start()
     {
-        
         menuFSM = new GameMenuFSM();
         menuFSM.MgMan = this;
         menuFSM.setState(MenuFSM.GMENU);
-
+        gameMenu();
     }
 
     // Update is called once per frame
@@ -24,47 +26,49 @@ public class MainGameManager : MonoBehaviour
     }
 
     //==============================
-    public  void gameExit()
-        {
-            Debug.Log("Game Exit");
-            menuFSM.handleInput(MenuFSM.MenuInput.ExitGame);
-            menuItems[4].SetActive(true);
-        }
+    public void gameExit()
+    {
+        menuFSM.gameExit();
+        menuItems[4].SetActive(true);
+        Debug.Log(menuFSM.ACTIONS);
+    }
 
-        public  void gameIntro()
-        {
-            Debug.Log("Game Intro");
-            menuFSM.handleInput(MenuFSM.MenuInput.ShowIntro);
-            menuItems[1].SetActive(true);
-        }
+    public void gameIntro()
+    {
+        menuFSM.gameIntro();
+        menuItems[1].SetActive(true);
+        Debug.Log(menuFSM.ACTIONS);
+    }
 
-        public  void gameMenu()
-        {
-            Debug.Log("Game Menu");
-             menuFSM.handleInput(MenuFSM.MenuInput.MainMenu);
-            menuItems[0].SetActive(true);
-        }
+    public void gameMenu()
+    {
+        menuFSM.gameMenu();
+        menuItems[0].SetActive(true);
+        Debug.Log(menuFSM.ACTIONS);
+    }
 
-        public  void gameStart()
-        {
-            Debug.Log("Game starting");
-              menuFSM.handleInput(MenuFSM.MenuInput.StartGame);
-            menuItems[2].SetActive(true);
-        }
+    public void gameStart()
+    {
+        menuFSM.gameStart();
+        menuItems[2].SetActive(true);
+        Debug.Log(menuFSM.ACTIONS);
+        civManager.init();
+    }
 
-        public  void gameStats()
-        {
-               menuFSM.handleInput(MenuFSM.MenuInput.ShowStats);  
-              menuItems[3].SetActive(true);
-            Debug.Log("Game Stats");
-        }
+    public void gameStats()
+    {
+        menuFSM.gameStats();
+        menuItems[3].SetActive(true);
+        Debug.Log(menuFSM.ACTIONS);
+        
+    }
 
     public void gameUIClear()
+    {
+        for (int i = 0; i < menuItems.Length; i++)
         {
-           for (int i = 0; i <menuItems.Length; i++)
-           {
             menuItems[i].SetActive(false);
-           }
         }
+    }
 
 }

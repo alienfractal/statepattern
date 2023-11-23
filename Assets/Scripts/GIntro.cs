@@ -4,16 +4,11 @@ public class GIntro : IMenuState
 {
     public void enter(MenuFSM menuFSM)
     {
-       menuFSM.gameIntro();
+       menuFSM.ACTIONS+="I";
        
     }
 
-    public void exit(MenuFSM menuFSM)
-    {
-       menuFSM.gameUIClear();
-    }
-
-    public void handleNextState(MenuFSM menuFSM, MenuFSM.MenuInput state)
+    public void transition(MenuFSM menuFSM, MenuFSM.MenuInput state)
     {
           switch(state)
         {
@@ -22,6 +17,8 @@ public class GIntro : IMenuState
                 menuFSM.setState(MenuFSM.GMENU);
                 break;    
         }
-        
+       menuFSM.gameUIClear();
     }
+
+ 
 }
