@@ -8,6 +8,7 @@ public class MainGameManager : MonoBehaviour
     // Start is called before the first frame update
     private GameMenuFSM menuFSM;
     public GameObject[] menuItems;
+   
     void Start()
     {
         menuFSM = new GameMenuFSM();
