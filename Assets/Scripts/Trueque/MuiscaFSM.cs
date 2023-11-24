@@ -51,6 +51,7 @@ public class MuiscaFSM : CivFSM
     {
         float foodBasedGrowth = calculatefoodBasedGrowth(); // Example growth/decline rates
         float housingBasedGrowth = calculateHousingGrowth();
+        Debug.Log("P ="+Population+" fbg *"+foodBasedGrowth+" hbg"+housingBasedGrowth);
         Population = (int)(Population * foodBasedGrowth * housingBasedGrowth);
         if (Population < 0) Population = 0;
     }
@@ -60,6 +61,9 @@ public class MuiscaFSM : CivFSM
         if (Foodsupply < Population)
         {
             return 0.65f;
+        }
+        else if(Foodsupply >= 2*Population){
+            return 1.5f;
         }
         return Foodsupply >= Population ? 1.02f : 0.98f;
     }

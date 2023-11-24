@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,7 @@ public class CivilManager : MonoBehaviour
 
     public void init()
     {
-        randomInt = Random.Range(1, 10);
+        randomInt = UnityEngine.Random.Range(1, 10);
         muiscaciv = new MuiscaFSM("Bacata",
         100, 300.0f, 130.0f, 25.0f, 60.0f, 1, 1, 1, 1, 1);
         muiscaciv.CivMan = this;
@@ -50,8 +51,18 @@ public class CivilManager : MonoBehaviour
 
     }
 
-    public void gameTrade()
+    public void gameTrade(CivFSM trader1, CivFSM trader2, String resource)
     {
+        if (resource.Equals("food"))
+        {
+            muiscaciv.Foodsupply += 50;
+        }
+        else if (resource.Equals("material"))
+        {
+            muiscaciv.Materialstockpile += 20;
+        }
+
+
         Debug.Log(muiscaciv.ACTIONS);
         muiscaciv.gameTrade();
         muiscaciv.gameIdle();
