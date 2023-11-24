@@ -63,14 +63,24 @@ public class GamePanelManager : MonoBehaviour
     {
 
 
-        
-        if(clickedObject.name.Equals(strBtnTradeFood)){
-            Debug.Log("Trade food");
-            civMan.gameTrade(civMan.muiscaciv,civMan.muiscaciv2,"food");
-        }
-        else if (clickedObject.name.Equals(strBtnTradeMaterials)){
-            Debug.Log("Trade materials");
-            civMan.gameTrade(civMan.muiscaciv,civMan.muiscaciv2,"material");
+        if (!civMan.tradePerformed)
+        {
+            SpriteRenderer sprtRender = clickedObject.GetComponent<SpriteRenderer>();
+             if (sprtRender != null)
+            {
+                sprtRender.color= ClickableObject.clickColor;
+            }
+
+            if (clickedObject.name.Equals(strBtnTradeFood))
+            {
+                Debug.Log("Trade food");
+                civMan.gameTrade(civMan.muiscaciv, civMan.muiscaciv2, CivilManager.Resource.Corn);
+            }
+            else if (clickedObject.name.Equals(strBtnTradeMaterials))
+            {
+                Debug.Log("Trade materials");
+                civMan.gameTrade(civMan.muiscaciv, civMan.muiscaciv2, CivilManager.Resource.Wood);
+            }
         }
 
 

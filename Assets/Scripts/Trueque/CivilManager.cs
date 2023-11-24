@@ -13,6 +13,14 @@ public class CivilManager : MonoBehaviour
 
     private int randomInt;
 
+    public enum Resource { Corn, Meat, Fish, Potatoes, Chicha,Wood, Cotton, Wax, Rock, Salt}
+
+   
+
+    //For each cycle only one action can be performed, you can only trade once per cycle.
+    //Other tasks like arrange food rates, and work distribution can be performed. 
+    public bool tradePerformed;
+
 
     void Start()
     {
@@ -27,6 +35,7 @@ public class CivilManager : MonoBehaviour
 
     public void init()
     {
+        tradePerformed = false;
         randomInt = UnityEngine.Random.Range(1, 10);
         muiscaciv = new MuiscaFSM("Bacata",
         100, 300.0f, 130.0f, 25.0f, 60.0f, 1, 1, 1, 1, 1);
@@ -51,17 +60,21 @@ public class CivilManager : MonoBehaviour
 
     }
 
-    public void gameTrade(CivFSM trader1, CivFSM trader2, String resource)
+    public void gameTrade(CivFSM trader1, CivFSM trader2, CivilManager.Resource resource)
     {
-        if (resource.Equals("food"))
+        if (!tradePerformed)
         {
-            muiscaciv.Foodsupply += 50;
+            if (resource.Equals(Resource.Corn))
+            {
+                muiscaciv.Foodsupply += 50;
+                tradePerformed=true;
+            }
+            else if (resource.Equals(Resource.Wood))
+            {
+                muiscaciv.Materialstockpile += 20;
+                tradePerformed=true;
+            }
         }
-        else if (resource.Equals("material"))
-        {
-            muiscaciv.Materialstockpile += 20;
-        }
-
 
         Debug.Log(muiscaciv.ACTIONS);
         muiscaciv.gameTrade();
@@ -73,6 +86,7 @@ public class CivilManager : MonoBehaviour
         Debug.Log(muiscaciv.ACTIONS);
         muiscaciv.gameUpdate();
         muiscaciv.gameIdle();
+        tradePerformed=false;
     }
 
     public void updateUI()

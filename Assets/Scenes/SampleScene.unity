@@ -1175,7 +1175,6 @@ GameObject:
   m_Component:
   - component: {fileID: 497627117}
   - component: {fileID: 497627118}
-  - component: {fileID: 497627119}
   m_Layer: 0
   m_Name: GamePanelGroup
   m_TagString: Untagged
@@ -1229,19 +1228,6 @@ MonoBehaviour:
   strBtnTradeFood: foodBtn
   strBtnTradeMaterials: materialBtn
   civMan: {fileID: 1740571913}
---- !u!114 &497627119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497627116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d401c03bd90fb147a439d9ec8d73138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gamePanelManager: {fileID: 497627118}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2783,7 @@ GameObject:
   - component: {fileID: 1206619961}
   - component: {fileID: 1206619962}
   - component: {fileID: 1206619963}
+  - component: {fileID: 1206619964}
   m_Layer: 0
   m_Name: materialBtn
   m_TagString: Untagged
@@ -2916,6 +2903,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &1206619964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206619960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d401c03bd90fb147a439d9ec8d73138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePanelManager: {fileID: 497627118}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  clickColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1226947693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,6 +4949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePanelManager: {fileID: 497627118}
+  tradePerformed: 0
 --- !u!1 &1741462198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5440,6 +5443,7 @@ GameObject:
   - component: {fileID: 1940575259}
   - component: {fileID: 1940575260}
   - component: {fileID: 1940575261}
+  - component: {fileID: 1940575262}
   m_Layer: 0
   m_Name: foodBtn
   m_TagString: Untagged
@@ -5559,6 +5563,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &1940575262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940575258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d401c03bd90fb147a439d9ec8d73138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePanelManager: {fileID: 497627118}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  clickColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &2028574973
 GameObject:
   m_ObjectHideFlags: 0
