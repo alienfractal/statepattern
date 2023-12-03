@@ -13,7 +13,13 @@ public abstract class CivFSM
 
     }
 
+    public enum Resource { Corn, Meat, Potatoes, Chicha,Wood, Cotton, Rock, Salt}
+    //Zipazgo o Zacazgo: Territorio mayor, gobernado por el Zipa o el Zaque
+    //Zybyn: Territorio intermedio, gobernado por el Zibyntyba
+    //Uta: Territorio menor, o poblado, gobernado por el Utatiba
+    public enum TechnologicalLevel{UTA,ZYBYN,ZIPAZGO}
 
+    private TechnologicalLevel currentTechLevel;
     private ICivState currentState;
     private String name;
 
@@ -31,7 +37,7 @@ public abstract class CivFSM
 
     // Economic and Development Indicators
     private float economicStrength;
-    private float technologicalLevel;
+    
     // Diplomatic and Military Properties
     private float militaryStrength;
 
@@ -56,7 +62,7 @@ public abstract class CivFSM
     public abstract void updateUI();
  
 
-    protected CivFSM(string name, int population, float foodsupply, float materialstockpile, float foodProductionRate, float materialProductionRate, float foodConsuptionRatePerperson, float materialConsuptionRatePerperson, float economicStrength, float technologicalLevel, float militaryStrength)
+    protected CivFSM(string name, int population, float foodsupply, float materialstockpile, float foodProductionRate, float materialProductionRate, float foodConsuptionRatePerperson, float materialConsuptionRatePerperson, float economicStrength, TechnologicalLevel _currentTechLevel, float militaryStrength)
     {
         this.name = name;
         this.population = population;
@@ -67,7 +73,7 @@ public abstract class CivFSM
         this.foodConsuptionRatePerperson = foodConsuptionRatePerperson;
         this.materialConsuptionRatePerperson = materialConsuptionRatePerperson;
         this.economicStrength = economicStrength;
-        this.technologicalLevel = technologicalLevel;
+        this.currentTechLevel = _currentTechLevel;
         this.militaryStrength = militaryStrength;
     }
 
@@ -104,7 +110,8 @@ public abstract class CivFSM
     public float FoodConsuptionRatePerperson { get => foodConsuptionRatePerperson; set => foodConsuptionRatePerperson = value; }
     public float MaterialConsuptionRatePerperson { get => materialConsuptionRatePerperson; set => materialConsuptionRatePerperson = value; }
     public float EconomicStrength { get => economicStrength; set => economicStrength = value; }
-    public float TechnologicalLevel { get => technologicalLevel; set => technologicalLevel = value; }
+    
     public float MilitaryStrength { get => militaryStrength; set => militaryStrength = value; }
     public int Deaths { get => deaths; set => deaths = value; }
+    public TechnologicalLevel CurrentTechLevel { get => currentTechLevel; set => currentTechLevel = value; }
 }

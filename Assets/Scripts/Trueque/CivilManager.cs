@@ -13,7 +13,9 @@ public class CivilManager : MonoBehaviour
 
     private int randomInt;
 
-    public enum Resource { Corn, Meat, Fish, Potatoes, Chicha,Wood, Cotton, Wax, Rock, Salt}
+    public static int currentCycle;
+
+
 
    
 
@@ -37,8 +39,14 @@ public class CivilManager : MonoBehaviour
     {
         tradePerformed = false;
         randomInt = UnityEngine.Random.Range(1, 10);
-        muiscaciv = new MuiscaFSM("Bacata",
-        100, 300.0f, 130.0f, 25.0f, 60.0f, 1, 1, 1, 1, 1);
+
+        muiscaciv = new MuiscaFSM(name: "Bacata",
+        population: 100, foodsupply: 300.0f, 
+        materialstockpile: 130.0f, foodProductionRate: 25.0f, 
+        materialProductionRate: 60.0f, foodConsuptionRatePerperson: 1,
+        materialConsuptionRatePerperson: 0.75f, economicStrength: 1, 
+        technologicalLevel: CivFSM.TechnologicalLevel.UTA, militaryStrength: 1);
+
         muiscaciv.CivMan = this;
         muiscaciv.setState(CivFSM.CIVIDLE);
         gameIdle();
@@ -60,16 +68,16 @@ public class CivilManager : MonoBehaviour
 
     }
 
-    public void gameTrade(CivFSM trader1, CivFSM trader2, CivilManager.Resource resource)
+    public void gameTrade(CivFSM trader1, CivFSM trader2, CivFSM.Resource resource)
     {
         if (!tradePerformed)
         {
-            if (resource.Equals(Resource.Corn))
+            if (resource.Equals(CivFSM.Resource.Corn))
             {
                 muiscaciv.Foodsupply += 50;
                 tradePerformed=true;
             }
-            else if (resource.Equals(Resource.Wood))
+            else if (resource.Equals(CivFSM.Resource.Wood))
             {
                 muiscaciv.Materialstockpile += 20;
                 tradePerformed=true;
@@ -87,6 +95,8 @@ public class CivilManager : MonoBehaviour
         muiscaciv.gameUpdate();
         muiscaciv.gameIdle();
         tradePerformed=false;
+        currentCycle+=1;
+        Debug.Log("muiscaciv.corn "+muiscaciv.corn+" muiscaciv.meat "+muiscaciv.meat+" muiscaciv.potatoes "+muiscaciv.chicha+" muiscaciv.chicha "+muiscaciv.chicha);
     }
 
     public void updateUI()
